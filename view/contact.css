@@ -1,0 +1,134 @@
+/*
+CONTACT
+*/
+.row{
+    margin-top:150px;
+}
+h2{
+    display: inline;
+    font-size: 50px;
+    background-color: blue;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    opacity: 0.6;
+}
+.header{
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0%;
+    height: 90px;
+    line-height: 70px;
+    background-color:#333333;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+}
+.header .header-logo{
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    float: left;
+    margin-left: 30px;
+}
+.header .header-menu{
+    display: flex;
+    float: right;
+    margin-right: 30px;
+}
+.header .header-menu a{
+    margin-right: 15px;
+    color: white;
+}
+.header .header-menu a:hover{
+    color: #3498db;
+}
+/*
+FOOTER
+*/
+.footer-information{
+    text-align: center;
+    margin-top: 30px;
+}
+.footer-information ul{
+    padding: 0;
+}
+.footer-information ul li {
+    display: inline-block;
+    list-style-type: none;
+}
+.footer button{
+    margin-top: 15px;
+    justify-content: center;
+}
+/*
+ABOUT
+*/
+.about .about-single-element .icon{
+    font-size: 60px;
+    text-align: center;
+    padding: 5%;
+    margin-top: 15px;
+}
+.about .about-single-element{
+    text-align: center;
+}
+.about .about-single-element p{
+    text-align: left;
+    margin-top: 20px;
+}
+/*
+HAMBURGER
+*/
+.header__navbar-toggle{
+    width: 40px;
+    height: 60px;    
+    align-items: center;
+    display: none;
+    cursor: pointer;
+}
+.header__navbar-toggle-icons, .header__navbar-toggle-icons:before, .header__navbar-toggle-icons:after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    border-radius: 5px;
+    background: #ffffff;
+    position: relative;
+}
+.header__navbar-toggle-icons:before{top: 10px;}
+.header__navbar-toggle-icons:after{top: -14px;}
+
+.is-open .header-menu{
+    transform: translateY(0%);
+}
+
+@media only screen and (max-width: 1280px)
+{
+    .banner-content{
+        display: none;
+    }
+    .header-menu {
+        transition: all 0.3s;
+        transform: translateY(-100%);
+        display: block;
+        flex-direction: column;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        background: #333333;
+        top: 0; left: 0;
+        color: white;
+    } 
+    .header__navbar-toggle{
+        display: flex;
+        float: right;
+        margin: 30px;
+        z-index: 1000;
+    }
+    .footer .footer-information ul li {
+        padding-top: 10px;
+        display: inline-block;
+        list-style-type: none;
+    }
+}

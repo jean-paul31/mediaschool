@@ -1,0 +1,91 @@
+body {
+    background-image: url('./assets/bg.jpg');
+    background-attachment: fixed;
+    font-family: 'Lemonada', cursive;
+}
+
+navbar {
+    width: 100%;
+}
+
+.signUp,
+.signIn,
+.profil,
+.message,
+.list,
+.singlePost,
+.erreur {
+    display: flex;
+    align-items: center;
+    border: solid 2px black;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    flex-direction: column;
+}
+
+.perso {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signUp,
+.signIn>label {
+    font-size: 20px;
+}
+
+.pseudo {
+    align-items: center;
+    justify-content: right;
+}
+
+img {
+    border-radius: 75%;
+    border: solid 2px black;
+}
+
+.new {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20%;
+    position: absolute right;
+}
+
+.add {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    font-size: 50px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 20px;
+}
+
+.com {
+    display: flex;
+    flex-direction: row;
+}
+
+#commentaire {
+    width: 5rem;
+}
+
+
+/* #commentaire:focus {
+    width: 10rem;
+} */
+
+.btn>i {
+    font-size: 2em;
+    color: rgb(13, 111, 150);
+}
+
+.btn>a {
+    font-size: 2em;
+    color: rgb(13, 111, 150);
+}
+
+.admin-list {
+    background-color: rgba(255, 255, 255, 0.6);
+}
