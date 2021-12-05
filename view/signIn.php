@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require "../controller/head.php";
 require "header.php";
@@ -6,8 +6,8 @@ require "../controller/connexion.php";
 ?>
 <div class="row justify-content-center">
     <div class="col-md-4 signIn">
-     <?php
-        if (!isset($_POST['connexion'])) {?>
+        <?php
+        if (!isset($_POST['connexion'])) { ?>
         <form action="" method="post" class="form-group">
             <div>
                 <label for="mailConnect">email:</label>
@@ -21,24 +21,21 @@ require "../controller/connexion.php";
             <div>
                 <input type="submit" class="btn btn-primary" value="connexion" name="connexion">
             </div>
-            
-            
-                <span>Vous n'avez pas encore de compte? <a href="signUp.php"> Créer un compte</a></span>
-                <?php
-            }
+            <span>Vous n'avez pas encore de compte? <a href="signUp.php"> Créer un compte</a></span>
+            <?php
+        }
             ?>
-            
+
         </form>
         <?php
-            if(isset($erreur))
-            {
+            if (isset($erreur)) {
                 echo "<p class='text-danger'>" . $erreur . "</p>";
             }
-            if(isset($message)){
-                echo "<p class='text-success'>" . $message . " cliquez <a href='index.php?id=" .$_SESSION['id'] . "'> ici </a></p>";
+            if (isset($message)) {
+                echo "<p class='text-success'>" . $message . " cliquez <a href='index.php?id=" . $_SESSION['id'] . "'> ici </a></p>";
             }
-        ?>
+            ?>
     </div>
 </div>
-    
-    <?php require "footer.php"?>
+
+<?php require "footer.php" ?>

@@ -3,7 +3,7 @@ require "db.php";
 require "../controller/modalPlusChild_control.php";
 
 
-$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+$conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=UTF8", $username, $password);
 
 if (isset($_GET['id']) and $_GET['id'] > 0) {
 
