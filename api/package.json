@@ -1,0 +1,11 @@
+{
+  "name": "socket-chat-app",
+  "version": "1.0.0",
+  "description": "chat",
+  "main": "index.js",
+  "author": "jp",
+  "dependencies": {
+    "express": "^4.17.3",
+    "socket.io": "^4.4.1"
+  }
+}

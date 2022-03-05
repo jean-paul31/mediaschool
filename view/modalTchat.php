@@ -15,14 +15,16 @@ require "../controller/modalTchat.controller.php";
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <ul>
-                        <?php
-
-                        ?>
-                        <li>
-                            <p>coucou</p>
-                        </li>
-                    </ul>
+                    <div id="messages">
+                        <form action="">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Commentaires" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-primary" type="button" id="button-addon2">Button</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
             </div>
