@@ -1,18 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>socket.io chat</title>
-</head>
+<html lang="fr">
+    <head>
+        <meta charset="UTF8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/png" href="assets/icons8-élèves-30.png" />
+        <title>Médiaschool tchat</title>
+    </head>
 <body>
-
-    <div id="messages">
-        <form action="">
-            <input type="text" id="msg" autocomplete="off">
-            <button>send</button>
-        </form>
+    <div class="container">
+        <div id="messages">
+            <form action="" methode="POST">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Commentaires" aria-label="Recipient's username" aria-describedby="button-addon2" name="comment" id="msg">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" id="button-addon2 send" name="send">Send</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
     <script
   src="https://code.jquery.com/jquery-3.6.0.js"
@@ -20,7 +28,7 @@
   crossorigin="anonymous"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-        $(function(){
+        (function(){
             var socket = io();
 
             $("form").submit(function(e){
@@ -32,7 +40,7 @@
             })
 
             socket.on('chat message', function(msg){
-                $("#messages").append($("<p>").text(msg));
+                $("#messages").append(("<p>").text(msg));
             });
         })
     </script>
