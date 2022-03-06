@@ -3,7 +3,7 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
 app.get('/', (req, res) => {
-    res.sendFile(`${__dirname}/view/modalTchat.php`);
+    res.sendFile(`${__dirname}/public/index.html`);
 })
 
 io.on('connection', (socket)=>{
