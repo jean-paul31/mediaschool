@@ -16,25 +16,18 @@ require "../controller/modalTchat.controller.php";
             <div class="modal-body">
                 <div class="container">
                     <div id="messages">
-                        <form action="" methode="POST">
+                        <div class="tchatList">
+                            
+                        </div>
+                        <form action="" method="POST">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Commentaires" aria-label="Recipient's username" aria-describedby="button-addon2" name="comment" id="comment">
+                                <input type="text" class="form-control" placeholder="Commentaires" aria-label="Commentaires" aria-describedby="button-addon2" name="comment" id="comment">
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-primary" id="button-addon2 send" name="send">Button</button>
+                                    <input class="btn btn-outline-primary"
+                                    type="submit" name="send" id="send" value=" Envoyer">
                                 </div>
                             </div>
-                            <div class="tchatList">
-                            <?php
-                                while ($userTchatInfo = $reqTchat->fetch()) {
-                                ?>
-                                    
-                                    <p><?=$userTchatInfo['content']?></p>;
-                                <?php
-                                }
-                                ?>
-                                
-                            </div>
-                        </form>
+                        </form> 
                     </div>
                 </div>
 

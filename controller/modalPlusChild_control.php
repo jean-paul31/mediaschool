@@ -13,14 +13,12 @@ if (isset($_POST['formSaveChild'])) {
     $childName = htmlspecialchars($_POST['childName']);
     $childSurname = htmlspecialchars($_POST['childSurname']);
     $childClass = $_POST['class'];
-    echo "<script type='text/javascript'>console.log('étape 2 ,c\'est ok');</script>";
 
     if (!empty($_POST['childName']) and !empty($_POST['childSurname']) and !empty($_POST['class'])) {
 
         $searchChild = $conn->prepare("SELECT * FROM children WHERE childName = ? AND childSurname = ? ");
         $searchChild->execute(array($childName, $childSurname));
         $childExist = $searchChild->rowCount();
-        echo "<script type='text/javascript'>console.log('étape 3 ,c\'est ok');</script>";
 
 
         if ($childExist == 0) {
@@ -32,7 +30,6 @@ if (isset($_POST['formSaveChild'])) {
                 $childClass,
                 $_SESSION['id']
             ));
-            echo "<script type='text/javascript'>console.log('étape 4 ,c\'est ok');</script>";
 
 
             $msg = "Votre enfant à bien été !";
