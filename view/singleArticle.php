@@ -14,10 +14,10 @@ if (isset($_GET['art_id'])) {
     while ($articleInfo = $reqArticle->fetch()) 
     {
         ?>
-        <div class="container">
+        <div class="container-fluid">
             
             <div class="row justify-content-center">  
-                <button class="btn btn-default" name="back"><a href="<?= $_SESSION['admin'] ? $admin : $connexion?>"><i class="fas fa-arrow-circle-left"></i></a></button>          
+                <button class="btn btn-default" name="back"><a href="<?= $_SESSION['admin'] ? "index.php?id=" . $_SESSION['id'] . "&admin=" . $_SESSION['admin'] : "index.php?id=" . $_SESSION['id'];?>"><i class="fas fa-arrow-circle-left"></i></a></button>          
                 <div class="col-md-4 singlePost">
                     <br>    
                     <div class="pseudo">                        

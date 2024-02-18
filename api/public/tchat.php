@@ -20,10 +20,6 @@
             </div>
         </div>
     </div>
-    <script>
-        let users = document.createElement("li")
-        users.id = "userTchat";
-        document.getElementById("instruments").appendChild(piano);
-    </script>
+
 </body>
 </html>

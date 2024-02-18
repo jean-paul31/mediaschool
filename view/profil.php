@@ -13,24 +13,26 @@ require "../controller/modalPlusChild_control.php";
 
 ?>
 <div class="container">
-    <div class="row  justify-content-center">
-        <div class="col-md-4">
+    <div class="row justify-content-center">
+        <div class="col-md-3">
             <div>
                 <button type="btn btn-secondary" class="btn btn-primary" data-toggle="modal"
                     data-target="#exampleModal">
                     Ajouter un enfant
                 </button>
             </div>
-            <div>
-                <ul class="list-group admin-list">
+            </br>
+            <div class=" profil">
+                <ul class="list-group admin-list" style="list-style-type:none;">
                     <?php
                     while ($childInfo = $reqChild->fetch()) {
                         if ($childInfo['user_id'] == $_SESSION['id']) {
                     ?>
-                    <li class="list-group-item">
+                    <li class="text-center">
                         <span><?= $childInfo['childName']; ?> - <?= $childInfo['childSurname']; ?> -
                             <?= $childInfo['className']; ?></span>
                     </li>
+                    </br>
                     <?php
                         }
                     }
@@ -38,6 +40,7 @@ require "../controller/modalPlusChild_control.php";
                 </ul>
             </div>
         </div>
+        <div class="col"></div>
         <div class="col-md-4 profil">
             <div>
                 <h2>Profil de <?php echo $userInfo['surname'] ?></h2>

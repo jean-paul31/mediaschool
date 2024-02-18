@@ -30,12 +30,10 @@ while ($commentInfo = $reqComment->fetch()) {
 
 
 <form action="" method="post" class="form-group com form-inline">
-    <div class="input-group">
-        <input type="text" name="commentaire" id="commentaire" class="form-control">
-        <div class="input-group-append">
-            <button type="submit" class="btn btn-default bg-light send" name="com">
-                <i class="fas fa-paper-plane"></i>
-            </button>
-        </div>
+    <div class="col-auto">
+        <input type="text" name="commentaire" id="commentaire" class="form-control" placeholder="Commentaires">
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-default send" name="com"><i class="fas fa-paper-plane"></i></button>
     </div>
 </form>

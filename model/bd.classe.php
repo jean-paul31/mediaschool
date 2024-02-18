@@ -20,7 +20,7 @@ class Database {
         if ($this->pdo == null) {
             try 
             {
-                $pdo = new PDO('mysql:host=localhost; dbname=mediaschool', 'adminJP', 'JpCb2009*');
+                $pdo = new PDO("mysql:host=$_host; dbname=$_dbname", $_username, $_password);
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $this->pdo = $pdo;
             } 

@@ -2,6 +2,13 @@ const app = require('express')();
 const server = require('http').createServer(app);
 const mysql = require('mysql');
 const io = require('socket.io')(server);
+const { exec } = require('child_process');
+const { error } = require('console');
+const { stdout, stderr } = require('process');
+
+let userAvatar;
+let userSurname;
+let userId;
 
 const con = mysql.createConnection({
 
@@ -14,34 +21,51 @@ const con = mysql.createConnection({
     database: "mediaschool"
  
   });
-  con.connect(function(err) {
+    con.connect(function(err) {
     if (err) throw err;
     console.log("Connecté à la base de données MySQL!");
     con.query("SELECT * FROM `users`", function (err, result) {
-        result.forEach((result) => {
-            let userAvatar = result.avatar;
-            let userSurname = result.surname;
-        });
+        if (err) 
+        {
+            console.error(err);
+        }
+        else
+        {
+            result.forEach((con) => {
+                userAvatar =con.avatar;
+                userSurname = con.surname;
+                userId = con.id;
+                console.log(userSurname);
+            });
+        }
     });
   });
 app.get('/', (req, res)=>{
-    res.sendFile(`${__dirname}/public/tchat.php`);
-})
-app.get(`/user/${con.id}`, (req, res) => {
-    res.sendFile(`${__dirname}/public/index.html`);
-})
-
-io.on('connexion', (socket)=>{
-    console.log('un utilisateur c\'est connecté');
-
-    socket.on('disconnect', ()=>{
-        console.log('un utilisateur c\'est déconnecté');
+    exec('php public/tchat.php', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`exec error: ${error}`);
+            return;
+        }
+        res.send(stdout);
     })
+})
+app.get(`/user/1`, (req, res) => {
+    res.write(tchat.php)
+    //res.sendFile(`${__dirname}/public/index.html`);
+})
+
+io.on('connection', (socket) => {
+    console.log('Un utilisateur s\'est connecté');
+
+    socket.on('disconnect', () => {
+        console.log('Un utilisateur s\'est déconnecté');
+    });
 
     socket.on('chat message', (msg) => {
         io.emit('chat message', msg);
-    })
-})
+    });
+});
+
 
 
 

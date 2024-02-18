@@ -22,7 +22,11 @@ navbar {
     background-color: rgba(255, 255, 255, 0.6);
     flex-direction: column;
 }
-
+.list2{
+    border: solid 2px black;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+}
 .perso {
     display: flex;
     flex-direction: column;
@@ -68,7 +72,7 @@ img {
 }
 
 #commentaire {
-    width: 5rem;
+    width: 10rem;
 }
 
 

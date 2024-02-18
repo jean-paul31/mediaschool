@@ -7,7 +7,7 @@ $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=UTF8", $username,
 
 if (isset($_SESSION['id'])) {
 
-    $reqUser = $conn->prepare("SELECT * FROM users WHERE i=?");
+    $reqUser = $conn->prepare("SELECT * FROM users WHERE id=?");
     $reqUser->execute(array($_SESSION['id']));
     $user = $reqUser->fetch();
 
