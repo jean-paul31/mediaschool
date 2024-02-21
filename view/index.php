@@ -8,7 +8,7 @@ require "../controller/modalTchat.controller.php";
 
 if (isset($_GET['id'])) { ?>
 <div class="container-fluid">
-    <div class="row"><?php
+    <div class="row d-flex justify-content-around"><?php
                             require "messagesList.php";
                             require "userList.php";
                             ?>
