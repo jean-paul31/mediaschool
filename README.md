@@ -1,7 +1,7 @@
 # mediaschool
 
-** api
+[^1] api:
 ```npm install ```
 
-** composer
+[^2] composer:
 ```composer install```
