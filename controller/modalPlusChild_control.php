@@ -1,8 +1,11 @@
 <?php
-require "db.php";
+require '../vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable("../");
+$dotenv->load();
 
 
-$conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+$conn = new PDO("mysql:host=" . $_ENV['SERVERNAME'] . ";dbname=" . $_ENV['DBNAME'] . ";charset=utf8", $_ENV['USERNAME'] , $_ENV['PASSWORD'] );
 
 echo "<script type='text/javascript'>console.log('étape 1 ok');</script>";
 $reqClass = $conn->query('SELECT * FROM class');

@@ -1,7 +1,10 @@
 <?php
-require "db.php";
+require '../vendor/autoload.php';
 
-$conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=UTF8", $username, $password);
+$dotenv = Dotenv\Dotenv::createImmutable("../");
+$dotenv->load();
+
+$conn = new PDO("mysql:host=" . $_ENV['SERVERNAME'] . ";dbname=" . $_ENV['DBNAME'] . ";charset=UTF8", $_ENV['USERNAME'] , $_ENV['PASSWORD'] );
 if (isset($_GET['art_id'])) {
     if (isset($_POST['com'])) {
         if (!empty($_POST['commentaire'])) {

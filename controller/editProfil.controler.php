@@ -1,7 +1,10 @@
 <?php
+require '../vendor/autoload.php';
 
-require "../controller/db.php";
-$conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=UTF8", $username, $password);
+$dotenv = Dotenv\Dotenv::createImmutable("../");
+$dotenv->load();
+
+$conn = new PDO("mysql:host=" . $_ENV['SERVERNAME'] . ";dbname=" . $_ENV['DBNAME'] . ";charset=UTF8", $_ENV['USERNAME'] , $_ENV['PASSWORD'] );
 
 // $finfo = finfo_open(FILEINFO_MIME_TYPE);
 

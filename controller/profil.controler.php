@@ -1,9 +1,11 @@
 <?php
-require "db.php";
+require '../vendor/autoload.php';
 require "../controller/modalPlusChild_control.php";
 
+$dotenv = Dotenv\Dotenv::createImmutable("../");
+$dotenv->load();
 
-$conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=UTF8", $username, $password);
+$conn = new PDO("mysql:host=" . $_ENV['SERVERNAME'] . ";dbname=" . $_ENV['DBNAME'] . ";charset=UTF8", $_ENV['USERNAME'] , $_ENV['PASSWORD'] );
 
 if (isset($_GET['id']) and $_GET['id'] > 0) {
 

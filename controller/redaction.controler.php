@@ -1,7 +1,8 @@
 <?php
+require '../vendor/autoload.php';
 
-
-require "db.php";
+$dotenv = Dotenv\Dotenv::createImmutable("../");
+$dotenv->load();
 
 // first line of PHP
 $defaultTimeZone='UTC';
@@ -17,7 +18,7 @@ function _date($format="r", $timestamp=false, $timezone=false)
     return date($format, ($timestamp!=false?(int)$timestamp:$myDateTime->format('U')) + $offset);
 }
 
-$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);  
+$conn = new PDO("mysql:host=" . $_ENV['SERVERNAME'] . ";dbname=" . $_ENV['DBNAME'] . "", $_ENV['USERNAME'] , $_ENV['PASSWORD'] );  
 
 
 

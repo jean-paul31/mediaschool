@@ -1,8 +1,15 @@
 <?php
-require_once "db.php";
+require '../vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable("../");
+$dotenv->load();
+
+
+
 try {
     
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname; charset=utf8", $username, $password);   
+    $conn = new PDO("mysql:host=" . $_ENV['SERVERNAME'] . ";dbname=" . $_ENV['DBNAME'] . "; charset=utf8", $_ENV['USERNAME'] , $_ENV['PASSWORD'] );   
+    
 
     if (isset($_POST['connexion'])) 
     {
@@ -14,6 +21,8 @@ try {
             $reqUser = $conn->prepare("SELECT * FROM users WHERE mail = ? AND mdp = ?");
             $reqUser->execute(array($mailConnect, $mdpConnect));
             $userExist = $reqUser->rowCount();
+
+          
             if($userExist == 1)
             {
                 $userinfo = $reqUser->fetch();                

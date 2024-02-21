@@ -1,10 +1,13 @@
 <?php
-require "../controller/db.php";
+require '../vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable("../");
+$dotenv->load();
 
 $id = $_SESSION['id'];
 
 
-$conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=UTF8", $username, $password);  
+$conn = new PDO("mysql:host=" . $_ENV['SERVERNAME'] . ";dbname=" . $_ENV['DBNAME'] . ";charset=UTF8", $_ENV['USERNAME'] , $_ENV['PASSWORD'] );  
 
 
 

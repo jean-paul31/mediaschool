@@ -18,7 +18,7 @@ const con = mysql.createConnection({
  
     password: "JpCb2009*!!",
 
-    database: "mediaschool"
+    database1: "mediaschool"
  
   });
     con.connect(function(err) {
