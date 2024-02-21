@@ -1,9 +1,9 @@
 # mediaschool
 
 > [!WARNING]
->[^1] api:
+> [] api:
 >```npm install ```
 
 > [!WARNING]
->[^2] composer:
+> [] composer:
 >```composer install```
