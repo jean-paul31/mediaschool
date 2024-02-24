@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Hello, this is a dynamic web page using the EJS template engine </h1>
+    <% var now = new Date(Date.now()); %>
+    <p> The current date is <b><%= now.toDateString() %></b> </p>
+    <ul>
+        <% data.forEach(function(row) { %>
+        <li><%=row.id%> ) - <%= row.surname %> - <%= row.name %></li>
+        <% }); %>
+    </ul>
+</body>
+</html>

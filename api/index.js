@@ -10,6 +10,8 @@ let userAvatar;
 let userSurname;
 let userId;
 
+app.set('view engine', 'ejs');
+
 const con = mysql.createConnection({
 
     host: "localhost",
@@ -18,57 +20,37 @@ const con = mysql.createConnection({
  
     password: "JpCb2009*!!",
 
-    database1: "mediaschool"
+    database: "mediaschool"
  
   });
-    con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connecté à la base de données MySQL!");
-    con.query("SELECT * FROM `users`", function (err, result) {
-        if (err) 
-        {
-            console.error(err);
-        }
-        else
-        {
-            result.forEach((con) => {
-                userAvatar =con.avatar;
-                userSurname = con.surname;
-                userId = con.id;
-                console.log(userSurname);
-            });
-        }
+    con.connect();
+    app.get('/', (req, res)=>{
+        con.query("SELECT * FROM `users`", function (err, result) {
+            if (err) throw err;
+            res.render('index', { data: result }); // Passage des données récupérées au template EJS
+        });
     });
-  });
-app.get('/', (req, res)=>{
-    exec('php public/tchat.php', (error, stdout, stderr) => {
-        if (error) {
-            console.error(`exec error: ${error}`);
-            return;
-        }
-        res.send(stdout);
+
+    app.get(`/user/1`, (req, res) => {
+        res.send('api/public/index.ejs')
+        //res.sendFile(`${__dirname}/public/index.html`);
     })
-})
-app.get(`/user/1`, (req, res) => {
-    res.write(tchat.php)
-    //res.sendFile(`${__dirname}/public/index.html`);
-})
 
-io.on('connection', (socket) => {
-    console.log('Un utilisateur s\'est connecté');
+    io.on('connection', (socket) => {
+        console.log('Un utilisateur s\'est connecté');
 
-    socket.on('disconnect', () => {
-        console.log('Un utilisateur s\'est déconnecté');
+        socket.on('disconnect', () => {
+            console.log('Un utilisateur s\'est déconnecté');
+        });
+
+        socket.on('chat message', (msg) => {
+            io.emit('chat message', msg);
+        });
     });
 
-    socket.on('chat message', (msg) => {
-        io.emit('chat message', msg);
-    });
-});
 
 
-
-
-server.listen(3000, ()=>{
-    console.log('ecoute sur le port 3000');
-})
+    const PORT = process.env.PORT || 3000;
+    server.listen(PORT, ()=>{
+        console.log('ecoute sur le port 3000');
+    })
