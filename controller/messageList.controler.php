@@ -12,5 +12,5 @@ $conn = new PDO("mysql:host=" . $_ENV['SERVERNAME'] . ";dbname=" . $_ENV['DBNAME
 
 
     
-    $reqMessage = $conn-> query('SELECT * FROM messages INNER JOIN users ON messages.user_id = users.id');
+    $reqMessage = $conn-> query('SELECT * FROM messages INNER JOIN users ON messages.id_sender  = users.id');
    

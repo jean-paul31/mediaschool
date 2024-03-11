@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello, this is a meteo display</title>
+    <%- include ('../partial/mainCss.ejs') %>
+</head>
+<body>
+<h1> Meteo pour <%= `${meteoCity.city_info.name},  ${meteoCity.city_info.country}` %></h1>
+<ul>
+    <% for (let i = 0; i<5; i++) { %>
+        <li><%- include ('../partial/meteoDay.ejs', { day: meteoCity[`fcst_day_${i}`] }) %></li>
+    <% } %>
+</ul>
+</body>
+</html>

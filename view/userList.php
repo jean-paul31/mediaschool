@@ -16,9 +16,7 @@ require "../controller/userList.controller.php";
                 <!-- <tr class="list-group-item">-->
             </br> 
                     <li>
-                        <a class="btn text-start" 
-                           data-toggle="modal" 
-                           data-target="#exampleModal">
+                        <a class="btn text-start" target="_blank" href="http://127.0.0.1:3000/user/<?=$userDisplayInfo['id']?>/message">
                         <img src="assets/membres/avatars/<?= $userDisplayInfo['avatar']; ?>" alt="" class="avatar" width="30px">
                         - <?= $userDisplayInfo['name']; ?> -
                         <?= $userDisplayInfo['surname']; ?>

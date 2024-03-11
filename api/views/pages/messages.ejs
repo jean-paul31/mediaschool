@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include ('../partial/mainCss.ejs') %>
+    <title>database</title>
+</head>
+<body>
+    <h1>Messages <%=surname.surname%> </h1>
+    <ul>
+        <% messages.forEach((message) => { 
+            if(userId == message.id_receiver){%>
+        <li>
+            <h2>messages envoyés</h2>
+            <%= message.id %> 
+            (<%= message.content %>)
+        </li>
+        <% } else { %>
+            <li>
+                <h2>messages reçus</h2>
+                <%= message.id %> 
+                (<%= message.content %> )
+            </li>
+       <% } }); %>
+    </ul>
+</body>
+</html>

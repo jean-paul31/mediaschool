@@ -28,7 +28,7 @@ if (isset($_POST['formRedaction'])) {
         $author = $_SESSION['id'];
         $title = htmlspecialchars($_POST['title']);
         $content = htmlspecialchars($_POST['content']);
-        $insertMessage = $conn->prepare("INSERT INTO messages(user_id, title, texte) VALUES (?, ?, ?)");
+        $insertMessage = $conn->prepare("INSERT INTO messages(id_sender , title, content) VALUES (?, ?, ?)");
         $insertMessage->execute(array($author, $title, $content));
         echo "<script type='text/javascript'>document.location.replace('index.php?id=". $_SESSION['id'] . "');</script>";
 

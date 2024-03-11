@@ -26,7 +26,7 @@ if (isset($_POST['formSaveChild'])) {
 
         if ($childExist == 0) {
 
-            $insertChild = $conn->prepare("INSERT INTO children (childName, childSurname, class_id, user_id) VALUES (?, ?, ?, ?)");
+            $insertChild = $conn->prepare("INSERT INTO children (childName, childSurname, class_id, user_id ) VALUES (?, ?, ?, ?)");
             $insertChild->execute(array(
                 $childName,
                 $childSurname,
@@ -43,4 +43,4 @@ if (isset($_POST['formSaveChild'])) {
         $erreur = "Tous les champs doivent être remplis !";
     }
 }
-$reqChild = $conn->query('SELECT * FROM children JOIN users ON children.user_id = users.id JOIN class ON children.class_id = class.id');
+$reqChild = $conn->query('SELECT * FROM children JOIN users ON children.user_id   = users.id JOIN class ON children.class_id = class.id');

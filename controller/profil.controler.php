@@ -16,7 +16,7 @@ if (isset($_GET['id']) and $_GET['id'] > 0) {
 }
 
 // $reqClass = $conn->query('SELECT * FROM class');
-// $reqChild = $conn->query('SELECT * FROM children JOIN users ON children.user_id = users.id JOIN class ON children.class_id = class.id');
+// $reqChild = $conn->query('SELECT * FROM children JOIN users ON children.id_sender  = users.id JOIN class ON children.class_id = class.id');
 
 // if (isset($_POST['formSaveChild'])) {
 
@@ -32,7 +32,7 @@ if (isset($_GET['id']) and $_GET['id'] > 0) {
 
 //         if ($childExist == 1) {
 
-//             $insertChild = $conn->prepare("INSERT INTO children (childName, childSurname, class_id, user_id) VALUES (?, ?, ?, ?)");
+//             $insertChild = $conn->prepare("INSERT INTO children (childName, childSurname, class_id, id_sender ) VALUES (?, ?, ?, ?)");
 //             $insertChild->execute(array(
 //                 htmlspecialchars_decode($childName),
 //                 htmlspecialchars_decode($childSurname),

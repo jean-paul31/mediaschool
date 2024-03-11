@@ -36,7 +36,7 @@ if (isset($_GET['art_id'])) {
                     </div>        
                     <h2><?= $articleInfo['title'];?></h2>
                     <span><?= $articleInfo['createdAt'];?></span>        
-                    <p><?= $articleInfo['texte'];?></p>     
+                    <p><?= $articleInfo['content'];?></p>     
                     <br><br>
                     <div>               
                         <?php

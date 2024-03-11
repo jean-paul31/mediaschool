@@ -1,56 +1,33 @@
-const app = require('express')();
-const server = require('http').createServer(app);
-const mysql = require('mysql');
-const io = require('socket.io')(server);
-const { exec } = require('child_process');
-const { error } = require('console');
-const { stdout, stderr } = require('process');
+const express = require('express');
+const bodyParser = require('body-parser');
+const api = require('./routes.js');
 
-let userAvatar;
-let userSurname;
-let userId;
+const app = express();
+const port = 3001;
+
+// Utilisez bodyParser correctement
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// Utilisez les routes définies dans routes.js
+app.use('/', api);
 
 app.set('view engine', 'ejs');
 
-const con = mysql.createConnection({
+app.use('/static', express.static('src/public'));
 
-    host: "localhost",
- 
-    user: "adminJP",
- 
-    password: "JpCb2009*!!",
+// Gestionnaire d'erreur 404
+app.use((req, res) => {
+    res.status(404).send('Oops, you took a wrong turn!');
+});
 
-    database: "mediaschool"
- 
-  });
-    con.connect();
-    app.get('/', (req, res)=>{
-        con.query("SELECT * FROM `users`", function (err, result) {
-            if (err) throw err;
-            res.render('index', { data: result }); // Passage des données récupérées au template EJS
-        });
-    });
+// Gestionnaire d'erreur 500
+app.use((err, req, res, next) => {
+    console.error(err.stack); 
+    res.status(500).send('Oops, server error!');
+});
 
-    app.get(`/user/1`, (req, res) => {
-        res.send('api/public/index.ejs')
-        //res.sendFile(`${__dirname}/public/index.html`);
-    })
-
-    io.on('connection', (socket) => {
-        console.log('Un utilisateur s\'est connecté');
-
-        socket.on('disconnect', () => {
-            console.log('Un utilisateur s\'est déconnecté');
-        });
-
-        socket.on('chat message', (msg) => {
-            io.emit('chat message', msg);
-        });
-    });
-
-
-
-    const PORT = process.env.PORT || 3000;
-    server.listen(PORT, ()=>{
-        console.log('ecoute sur le port 3000');
-    })
+// Démarrer le serveur après la définition des gestionnaires d'erreur
+app.listen(port, () => {
+    console.log(`Exemple app listening on port ${port} !`);
+});
