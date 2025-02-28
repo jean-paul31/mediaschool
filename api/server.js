@@ -2,6 +2,14 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const mysql = require('mysql2');
+require('dotenv').config();
+
+
+// Vérifier les variables d'environnement
+// if (!process.env.SERVERNAME || !process.env.USERNAME || !process.env.PASSWORD) {
+//   console.error('Les variables d\'environnement ne sont pas définies correctement.');
+//   process.exit(1); // Arrêter le serveur si les variables sont manquantes
+// }
 
 const app = express();
 const server = http.createServer(app);
@@ -10,8 +18,8 @@ const io = new Server(server);
 // Connexion à la base de données MySQL
 const db = mysql.createConnection({
   host: 'localhost',
-  user: 'root', // Remplace par ton utilisateur MySQL
-  password: '', // Remplace par ton mot de passe MySQL
+  user: 'adminJP', // Remplace par ton utilisateur MySQL
+  password: 'JpCb2009*!!', // Remplace par ton mot de passe MySQL
   database: 'mediaschool' // Remplace par ton nom de base de données
 });
 
